@@ -2,7 +2,7 @@ class RevealingText {
   constructor(config) {
     this.element = config.element;
     this.text = config.text;
-    this.speed = config.speed || 60;
+    this.speed = config.speed || 45;
 
     this.timeout = null;
     this.isDone = false;
@@ -19,6 +19,15 @@ class RevealingText {
     } else {
       this.isDone = true;
     }
+  }
+
+  warpToDone() {
+    clearTimeout(this.timeout);
+    this.isDone = true;
+
+    this.element.querySelectorAll('span').forEach((span) => {
+      span.classList.add('revealed');
+    });
   }
 
   init() {
