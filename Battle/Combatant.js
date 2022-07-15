@@ -72,6 +72,15 @@ class Combatant {
 
     //Update level on screen
     this.hudElement.querySelector('.Combatant_level').innerText = this.level;
+
+    const statusElement = this.hudElement.querySelector('.Combatant_status');
+    if (this.status) {
+      statusElement.innerText = this.status.type;
+      statusElement.style.display = 'block';
+    } else {
+      statusElement.innerText = '';
+      statusElement.style.display = 'none';
+    }
   }
 
   init(container) {
