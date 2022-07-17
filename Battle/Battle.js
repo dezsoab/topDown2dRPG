@@ -10,7 +10,7 @@ class Battle {
           xp: 75,
           maxXp: 100,
           level: 1,
-          status: { type: 'saucy' },
+          status: null,
           isPlayerControlled: true,
         },
         this,
@@ -33,7 +33,7 @@ class Battle {
         {
           ...Pizzas.v001,
           team: 'enemy',
-          hp: 20,
+          hp: 2,
           maxHp: 50,
           xp: 20,
           maxXp: 100,
@@ -45,7 +45,7 @@ class Battle {
         {
           ...Pizzas.f001,
           team: 'enemy',
-          hp: 25,
+          hp: 2,
           maxHp: 50,
           xp: 30,
           maxXp: 100,
