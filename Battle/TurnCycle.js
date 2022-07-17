@@ -21,6 +21,21 @@ class TurnCycle {
       enemy,
     });
 
+    // stop if we're replacing the pizza
+
+    if (submission.replacement) {
+      await this.onNewEvent({
+        type: 'replace',
+        replacement: submission.replacement,
+      });
+      await this.onNewEvent({
+        type: 'textMessage',
+        text: `Go get 'em, ${submission.replacement.name}!`,
+      });
+      this.nextTurn();
+      return;
+    }
+
     if (submission.instanceId) {
       this.battle.items = this.battle.items.filter(
         (i) => i.instanceId !== submission.instanceId,
@@ -59,7 +74,10 @@ class TurnCycle {
     if (expiredEvent) {
       await this.onNewEvent(expiredEvent);
     }
+    this.nextTurn();
+  }
 
+  nextTurn() {
     this.currentTeam = this.currentTeam === 'player' ? 'enemy' : 'player';
     this.turn();
   }
