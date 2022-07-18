@@ -7,7 +7,9 @@ class OverworldEvent {
   stand(resolve) {
     const who = this.map.gameObjects[this.event.who];
     who.startBehavior(
-      { map: this.map },
+      {
+        map: this.map,
+      },
       {
         type: 'stand',
         direction: this.event.direction,
@@ -15,20 +17,22 @@ class OverworldEvent {
       },
     );
 
+    //Set up a handler to complete when correct person is done walking, then resolve the event
     const completeHandler = (e) => {
       if (e.detail.whoId === this.event.who) {
         document.removeEventListener('PersonStandComplete', completeHandler);
         resolve();
       }
     };
-
     document.addEventListener('PersonStandComplete', completeHandler);
   }
 
   walk(resolve) {
     const who = this.map.gameObjects[this.event.who];
     who.startBehavior(
-      { map: this.map },
+      {
+        map: this.map,
+      },
       {
         type: 'walk',
         direction: this.event.direction,
@@ -36,13 +40,13 @@ class OverworldEvent {
       },
     );
 
+    //Set up a handler to complete when correct person is done walking, then resolve the event
     const completeHandler = (e) => {
       if (e.detail.whoId === this.event.who) {
         document.removeEventListener('PersonWalkingComplete', completeHandler);
         resolve();
       }
     };
-
     document.addEventListener('PersonWalkingComplete', completeHandler);
   }
 
@@ -53,6 +57,7 @@ class OverworldEvent {
         this.map.gameObjects['hero'].direction,
       );
     }
+
     const message = new TextMessage({
       text: this.event.text,
       onComplete: () => resolve(),
@@ -63,7 +68,7 @@ class OverworldEvent {
   changeMap(resolve) {
     const sceneTransition = new SceneTransition();
     sceneTransition.init(document.querySelector('.game-container'), () => {
-      this.map.overworld.startMap(window.OverwoldMaps[this.event.map]);
+      this.map.overworld.startMap(window.OverworldMaps[this.event.map]);
       resolve();
 
       sceneTransition.fadeOut();
@@ -72,11 +77,11 @@ class OverworldEvent {
 
   battle(resolve) {
     const battle = new Battle({
+      enemy: Enemies[this.event.enemyId],
       onComplete: () => {
         resolve();
       },
     });
-
     battle.init(document.querySelector('.game-container'));
   }
 
