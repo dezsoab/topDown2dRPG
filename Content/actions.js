@@ -1,65 +1,50 @@
 window.Actions = {
   damage1: {
-    name: 'Whomp!',
+    name: "Whomp!",
+    description: "Pillowy punch of dough",
     success: [
-      { type: 'textMessage', text: '{CASTER} uses Whomp!' },
-      { type: 'animation', animation: 'spin' },
-      { type: 'stateChange', damage: 10 },
-    ],
+      { type: "textMessage", text: "{CASTER} uses {ACTION}!"},
+      { type: "animation", animation: "spin"},
+      { type: "stateChange", damage: 10}
+    ]
   },
   saucyStatus: {
-    name: 'Tomato Squeeze!',
-    targetType: 'friendly',
+    name: "Tomato Squeeze",
+    description: "Applies the Saucy status",
+    targetType: "friendly",
     success: [
-      { type: 'textMessage', text: '{CASTER} uses {ACTION}!' },
-      {
-        type: 'stateChange',
-        status: {
-          type: 'saucy',
-          expiresIn: 3,
-        },
-      },
-    ],
+      { type: "textMessage", text: "{CASTER} uses {ACTION}!"},
+      { type: "stateChange", status: { type: "saucy", expiresIn: 3 } }
+    ]
   },
-  clmusyStatus: {
-    name: 'Olive Oil!',
+  clumsyStatus: {
+    name: "Olive Oil",
+    description: "Slippery mess of deliciousness",
     success: [
-      { type: 'textMessage', text: '{CASTER} uses {ACTION}!' },
-      { type: 'animation', animation: 'glob', color: '#dafd2a' },
-      {
-        type: 'stateChange',
-        status: {
-          type: 'clmusy',
-          expiresIn: 3,
-        },
-      },
-      { type: 'textMessage', text: '{TARGET} is slipping all around!' },
-    ],
+      { type: "textMessage", text: "{CASTER} uses {ACTION}!"},
+      { type: "animation", animation: "glob", color: "#dafd2a" },
+      { type: "stateChange", status: { type: "clumsy", expiresIn: 3 } },
+      { type: "textMessage", text: "{TARGET} is slipping all around!"},
+    ]
   },
-  // ITEMS
+  //Items
   item_recoverStatus: {
-    name: 'Heating Lamp',
-    description: 'Feeling fresh and warm',
-    targetType: 'friendly',
+    name: "Heating Lamp",
+    description: "Feeling fresh and warm",
+    targetType: "friendly",
     success: [
-      { type: 'textMessage', text: '{CASTER} uses a {ACTION}!' },
-      {
-        type: 'stateChange',
-        status: null,
-      },
-      { type: 'textMessage', text: 'Feeling fresh!' },
-    ],
+      { type: "textMessage", text: "{CASTER} uses a {ACTION}!"},
+      { type: "stateChange", status: null },
+      { type: "textMessage", text: "Feeling fresh!", },
+    ]
   },
   item_recoverHp: {
-    name: 'Parmesan',
-    targetType: 'friendly',
+    name: "Parmesan",
+    targetType: "friendly",
     success: [
-      { type: 'textMessage', text: '{CASTER} sprinkles on some {ACTION}!' },
-      {
-        type: 'stateChange',
-        recover: 10,
-      },
-      { type: 'textMessage', text: '{CASTER} recovers HP!' },
-    ],
+      { type:"textMessage", text: "{CASTER} sprinkles on some {ACTION}!", },
+      { type:"stateChange", recover: 10, },
+      { type:"textMessage", text: "{CASTER} recovers HP!", },
+    ]
   },
-};
+}

@@ -1,30 +1,30 @@
 window.Enemies = {
-  erio: {
-    name: 'Erio',
-    src: '/images/characters/people/erio.png',
+  "erio": {
+    name: "Erio",
+    src: "/images/characters/people/erio.png",
     pizzas: {
-      a: {
-        pizzaId: 's001',
+      "a": {
+        pizzaId: "s001",
         maxHp: 50,
         level: 1,
       },
-      b: {
-        pizzaId: 's002',
+      "b": {
+        pizzaId: "s002",
         maxHp: 50,
         level: 1,
       },
-    },
+    }
   },
-  beth: {
-    name: 'Beth',
-    src: '/images/characters/people/npc1.png',
+  "beth": {
+    name: "Beth",
+    src: "/images/characters/people/npc1.png",
     pizzas: {
-      a: {
+      "a": {
         hp: 1,
-        pizzaId: 'f001',
+        pizzaId: "f001",
         maxHp: 50,
         level: 1,
       },
-    },
-  },
-};
+    }
+  }
+}
