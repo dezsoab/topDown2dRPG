@@ -8,14 +8,19 @@ class Hud {
       s.update(window.playerState.pizzas[s.id]);
     });
   }
+
   createElement() {
+    if (this.element) {
+      this.element.remove();
+      this.scoreboards = [];
+    }
+
     this.element = document.createElement('div');
     this.element.classList.add('Hud');
 
     const { playerState } = window;
     playerState.lineup.forEach((key) => {
       const pizza = playerState.pizzas[key];
-
       const scoreboard = new Combatant(
         {
           id: key,
@@ -37,6 +42,11 @@ class Hud {
 
     document.addEventListener('PlayerStateUpdated', () => {
       this.update();
+    });
+
+    document.addEventListener('LineupChanged', () => {
+      this.createElement();
+      container.appendChild(this.element);
     });
   }
 }
